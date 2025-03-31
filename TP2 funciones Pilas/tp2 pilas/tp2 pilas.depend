@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1490112217 source:c:\users\tqman\downloads\librerias\pila.c
+	"pila.h"
+
+1490112217 c:\users\tqman\downloads\librerias\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1742579817 source:c:\users\tqman\onedrive\desktop\tobias\utn\programacion 1\tp2 funciones pilas\tp2 pilas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../../../../../../../Downloads/Librerias/pila.h"
+
