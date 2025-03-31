@@ -25,10 +25,10 @@ int loadArrays(int A[], int dimension)
         scanf(" %c", &opcion);
     }
 }
-void apilarArray (int A [],int validos)
+void apilarArray (int A [],int validos, )
 {
     for (int i = 0 ; i<validos ; i++)
-    {
+    {//esto es un comentario
 
     }
 
