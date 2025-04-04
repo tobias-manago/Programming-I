@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1490112217 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp2 funciones pilas\tp2 pilas nuevo\pila.c
+	"pila.h"
+
+1490112217 c:\users\tqman\onedrive\documentos\github\programming-i\tp2 funciones pilas\tp2 pilas nuevo\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1743803477 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp2 funciones pilas\tp2 pilas nuevo\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pila.h"
+

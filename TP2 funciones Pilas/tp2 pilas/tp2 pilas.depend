@@ -11,3 +11,15 @@
 	<stdlib.h>
 	"../../../../../../../Downloads/Librerias/pila.h"
 
+1490112217 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp2 funciones pilas\tp2 pilas\pila.c
+	"pila.h"
+
+1490112217 c:\users\tqman\onedrive\documentos\github\programming-i\tp2 funciones pilas\tp2 pilas\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1743527925 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp2 funciones pilas\tp2 pilas\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pila.h"
+

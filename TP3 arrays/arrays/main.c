@@ -14,7 +14,7 @@ int main()
     showArray(A, validosA);
 
     int rtnplusArray = plusArray(A,validosA);
-    printf("el resultado de la suma de los elemenots del arreglo es : %d",rtnplusArray);
+    printf("el resultado de la suma de los elementos del arreglo es : %d",rtnplusArray);
     return 0;
 }
 
