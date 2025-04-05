@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pila.h"
-void cargar_pila1(Pila* pilin);
+void cargar_pila1(Pila* pilita);
 void cambiar_de_pila (Pila* A, Pila* B);
 int main()
 {
-    Pila* pilin;
-    inicpila(&pilin);                ///funcion para cargar pilas
-    cargar_pila(&pilin);
+    Pila* pilita;
+    inicpila(&pilita);                ///funcion para cargar pilas
+    cargar_pila(&pilita);
 
     Pila* A, B;
     inicpila(&A);
@@ -18,19 +18,26 @@ int main()
     mostrar(&A);
     printf("esta es la pila B");
     mostrar(&B);
+    pila* ordenada;
+    inicpila(&ordenada)
+    ordenamientoPorIsersion(&ordenada);
+    {
+
+    }
+
+
     return 0;
 }
-void cargar_pila (Pila* pilin)
+void cargar_pila (Pila* pilita)
 {
     char opcion = 's';
     while (opcion == 's' || opcion == 'S')
     {
-        leer(&pilin);
+        leer(&pilita);
         printf("desea seguir s/n \n");                 //punto 1
         fflush(stdin);
         scanf("%c",&opcion);
     }
-    mostrar(&pilin);
 }
 void cambiar_de_pila (Pila* A,Pila* B)
 {
@@ -50,12 +57,32 @@ void cargar_pila1 (Pila* A)
         scanf("%c",&opcion);
     }
 }
-int encontrarElMenor (pilin)
+int encontrarElMenor (pilita)
 {
+    Pila Aux;
+    inicpila(&Aux);
     int menor ;
-    while(!pilavacia (pilin))
+    menor = desapilar(pilita);
+            while(!pilavacia (pilita))
     {
+          if (tope(pilita)> menor)
+        {
+            apilar(&Aux,desapilar(pilita));
+        }
+        else
+        {
+            apilar(&Aux, menor);
+            menor = desapilar(pilita);
 
-    }
+        while(!pilavacia(&Aux))
+              {
+        apilar(pilita,desapilar(&Aux));
+        }
+}
+return menor
+}
 
+Pila ordenamientoPorInsersion (Pila* ordenada)
+{
+    while (!pilavacia(NoOrdenada))
 }
