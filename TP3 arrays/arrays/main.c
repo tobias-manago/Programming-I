@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "pila.h"
 
 // Prototipos de funciones
 int loadArrays(int A[], int dimension);
@@ -15,6 +16,8 @@ int main()
 
     int rtnplusArray = plusArray(A,validosA);
     printf("el resultado de la suma de los elementos del arreglo es : %d",rtnplusArray);
+
+    desapilarArray(A,validosA);
     return 0;
 }
 
@@ -35,13 +38,13 @@ int loadArrays(int A[], int dimension)
     return i;
 }
 
-void showArray(int A[], int validos)
+void showArray(int A[], int validosA)
 {
     printf("Contenido del arreglo: [ ");
-    for (int i = 0; i < validos; i++)
+    for (int i = 0; i < validosA; i++)
     {
         printf("%d", A[i]);
-        if (i < validos - 1)
+        if (i < validosA - 1)
         {
             printf(", ");
         }
@@ -57,6 +60,18 @@ int plusArray (int A[],int validosA)
         suma+=A[i];
     }
     return suma;
+}
+
+void desapilarArray(int A[], int validosA)
+{
+    Pila pilita;
+    inicpila(&pilita);
+
+    for (int i = 0; i < validosA; i++)
+    {
+        apilar(&pilita,A[i]);
+    }
+    mostrar(&pilita);
 }
 
 

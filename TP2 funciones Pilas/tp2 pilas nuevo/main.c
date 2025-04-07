@@ -3,12 +3,13 @@
 #include "pila.h"
 void cargar_pila1(Pila* pilita);
 void cambiar_de_pila (Pila* A, Pila* B);
+int encontrarElMenor(Pila* pilita);
 int main()
 {
     Pila* pilita;
     inicpila(&pilita);                ///funcion para cargar pilas
     cargar_pila(&pilita);
-
+/*
     Pila* A, B;
     inicpila(&A);
     inicpila(&B);
@@ -17,14 +18,14 @@ int main()
     printf("esta es la pila A");
     mostrar(&A);
     printf("esta es la pila B");
-    mostrar(&B);
-    pila* ordenada;
-    inicpila(&ordenada)
-    ordenamientoPorIsersion(&ordenada);
-    {
-
-    }
-
+    mostrar(&B); */
+    Pila* ordenada;
+    inicpila(&ordenada);
+    int menor = encontrarElMenor(&pilita);
+    printf("el menor de la pila es: %i",menor);
+    ordenamientoPorIsercion(&ordenada,&pilita);
+    printf("la pila ordenada queda queda asi ");
+    mostrar(&ordenada);
 
     return 0;
 }
@@ -57,15 +58,15 @@ void cargar_pila1 (Pila* A)
         scanf("%c",&opcion);
     }
 }
-int encontrarElMenor (pilita)
+int encontrarElMenor(Pila* pilita)
 {
     Pila Aux;
     inicpila(&Aux);
     int menor ;
     menor = desapilar(pilita);
-            while(!pilavacia (pilita))
+    while(!pilavacia (pilita))
     {
-          if (tope(pilita)> menor)
+        if (tope(pilita)> menor)
         {
             apilar(&Aux,desapilar(pilita));
         }
@@ -74,15 +75,27 @@ int encontrarElMenor (pilita)
             apilar(&Aux, menor);
             menor = desapilar(pilita);
 
-        while(!pilavacia(&Aux))
-              {
-        apilar(pilita,desapilar(&Aux));
+            while(!pilavacia(&Aux))
+            {
+                apilar(pilita,desapilar(&Aux));
+            }
         }
-}
-return menor
+        printf("%i",menor);
+        return menor;
+    }
 }
 
-Pila ordenamientoPorInsersion (Pila* ordenada)
-{
-    while (!pilavacia(NoOrdenada))
-}
+   void ordenamientoPorInsercion (Pila* ordenada,Pila* pilita)
+    {
+        int menorO;
+
+        while (!pilavacia(pilita))
+        {
+            menorO = encontrarElMenor(pilita);
+
+            if (menorO<tope(pilita))
+            {
+                apilar(ordenada, menorO);
+            }
+        }
+    }
