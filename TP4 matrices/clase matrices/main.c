@@ -6,6 +6,7 @@
 #define DIMCOLS 3
 float promedio_Matriz (int M[DIMROWS][DIMCOLS]);
 int main()
+
 {
     int M [DIMROWS][DIMCOLS] = { {1,2,3},{4,5,6},{7,8,9} };
     M [0][0] = 3 ;      ///en la la fila 0 columna 0 es 3
@@ -18,6 +19,12 @@ int main()
     mostrarMatriz1(M1);
     sumarMatriz(M);
     promedio_Matriz(M);
+    int dado;
+    printf("\n que numero desea saber si esta dentro de la matriz: ");
+    scanf("%d",&dado);
+    int TorF = saber_si_tiene_un_dato(M,dado);
+    printf("\n si muestra 1 esta el dato, si muestra 0 no esta: %d",TorF);
+
     return 0;
 }
 
@@ -99,6 +106,27 @@ float promedio_Matriz (int M[DIMROWS][DIMCOLS])
     printf("\n %d",Dim);
     promedio = sumatoria / Dim;
     printf("\n el promedio del arreglo es: %.2f", promedio);
+}
+
+int saber_si_tiene_un_dato(int M[DIMROWS][DIMCOLS],int dato)
+{
+    int TorF = 0;
+
+    for(int i = 0; i < DIMROWS; i++)
+    {
+        for(int j = 0; j < DIMCOLS; j++)
+        {
+            if(dato == M[i][j])
+            {
+              TorF = 1 ;
+            }
+            else
+            {
+              TorF = 0 ;
+            }
+        }
+    }
+    return TorF;
 }
 
 
