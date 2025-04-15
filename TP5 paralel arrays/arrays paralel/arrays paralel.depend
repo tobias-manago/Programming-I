@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1744731076 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp5 paralel arrays\arrays paralel\main.c
+1744735408 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp5 paralel arrays\arrays paralel\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 
