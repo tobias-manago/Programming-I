@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1744053662 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp4 matrices\clase matrices\main.c
+1744062016 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp4 matrices\clase matrices\main.c
 	<stdio.h>
 	<stdlib.h>
 	"time.h"
