@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1743953253 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp3 arrays\arrays\main.c
+1745121895 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp3 arrays\arrays\main.c
 	<stdio.h>
 	<stdlib.h>
 	"pila.h"
