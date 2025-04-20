@@ -10,6 +10,8 @@ int plusArray (int A[],int validosA);
 float loadArraysF (float F[], int dimension);
 void showArrayF(float F[], int validosF);
 float plusArrayF (float F[],int validosF);
+int loadArraysC(char C[], int dimension);
+int contieneCaracter(char C[], int dimension, char elementoBuscado);
 int main()
 {
     int A[10];
@@ -35,7 +37,22 @@ int main()
     showArrayF(F,validosF);
 
     float rtnplusArrayF = plusArrayF(F,validosF);
-    printf("el resultado de la suma de los elementos del arreglo float es : %.2f",rtnplusArrayF);
+    printf("el resultado de la suma de los elementos del arreglo float es : %.2f \n",rtnplusArrayF);
+
+    char C[50];
+    char elementoBuscado;
+    int validosC = loadArraysC(C,50);
+    printf("que elemento desea encontrar: ");
+    scanf(" %c",&elementoBuscado);
+    int RtncontieneCaracter = contieneCaracter(C,50,elementoBuscado);
+    if (RtncontieneCaracter = 1)
+    {
+        printf("el elemento buscado se encuentra en el arreglo de caracteres ");
+    }
+    else
+    {
+        printf("el elemento buscado no se encuentra en el arreglo de caracteres ");
+    }
 
     return 0;
 }
@@ -92,6 +109,7 @@ Pila desapilarArray(int A[], int validosA)
     }
     return pilita;
 }
+
 float loadArraysF (float F[], int dimension)
 {
     char opcion = 's';
@@ -132,5 +150,31 @@ float plusArrayF (float F[],int validosF)
     }
     return suma;
 }
+int loadArraysC(char C[], int dimension)
+{
+    char opcion = 's';
+    int i = 0;
+    while ((opcion == 's' || opcion == 'S') && i < dimension)
+    {
+        printf(" Ingresa las letras que quieras : ");
+        scanf(" %c",&C[i]);
+        i++;
 
+        printf("Desea seguir cargando el arreglo de caracteres [s/n]: ");
+        fflush(stdin);
+        scanf(" %c", &opcion); // Espacio antes de %c para ignorar el salto de línea
+    }
+    return i;
+}
+int contieneCaracter(char C[], int dimension, char elementoBuscado)
+{
+    for (int i = 0; i < dimension; i++)
+    {
+        if (C[i] == elementoBuscado)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
 
