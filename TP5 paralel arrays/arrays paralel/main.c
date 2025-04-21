@@ -30,7 +30,7 @@ int cargaArreglosParalelos(int matricula[20], char nombre[20][30])
 
     while (i < 20 && rta == 's')
     {
-        printf("\nIngrese matricula del alumno: ");
+        printf("\nIngrese legajo del alumno: ");
         scanf("%d", &matricula[i]);
 
         fflush(stdin);
