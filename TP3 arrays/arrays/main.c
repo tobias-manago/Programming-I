@@ -12,6 +12,7 @@ void showArrayF(float F[], int validosF);
 float plusArrayF (float F[],int validosF);
 int loadArraysC(char C[], int dimension);
 int contieneCaracter(char C[], int dimension, char elementoBuscado);
+void insertarOrdenado(char C[], int* validos, char nuevoChar);
 int main()
 {
     int A[10];
@@ -30,6 +31,8 @@ int main()
     mostrar(&Pa);
 
 
+
+    /*
     float F[100];
 
     int validosF = loadArraysF(F,100);
@@ -38,6 +41,8 @@ int main()
 
     float rtnplusArrayF = plusArrayF(F,validosF);
     printf("el resultado de la suma de los elementos del arreglo float es : %.2f \n",rtnplusArrayF);
+    */
+
 
     char C[50];
     char elementoBuscado;
@@ -53,6 +58,12 @@ int main()
     {
         printf("el elemento buscado no se encuentra en el arreglo de caracteres ");
     }
+
+    char nuevoChar;
+    printf("\nque dato desea ingresar en el arreglo de caracteres ?: ");
+    fflush(stdin);
+    scanf("%c",&nuevoChar);
+    insertarOrdenado(C,validosC,nuevoChar);
 
     return 0;
 }
@@ -177,4 +188,112 @@ int contieneCaracter(char C[], int dimension, char elementoBuscado)
     }
     return 0;
 }
+// Inserta un carácter manteniendo el orden alfabético
+void insertarOrdenado(char C[], int* validosC, char nuevoChar)
+{
+    int i = *validosC - 1;
+    while (i >= 0 && C[i] > nuevoChar)
+    {
+        C[i + 1] = C[i];
+        i--;
+    }
+    C[i + 1] = nuevoChar;
+    (*validosC)++;
+}
 
+// Devuelve el carácter máximo del arreglo
+char maxCaracter(char C[], int validos)
+{
+    char max = C[0];
+    for (int i = 1; i < validos; i++)
+    {
+        if (C[i] > max)
+            max = C[i];
+    }
+    return max;
+}
+
+// Devuelve 1 si el arreglo es capicúa, 0 si no lo es
+int esCapicua(int A[], int validos)
+{
+    for (int i = 0; i < validos / 2; i++)
+    {
+        if (A[i] != A[validos - 1 - i])
+            return 0;
+    }
+    return 1;
+}
+
+// Invierte el arreglo sin usar auxiliar
+void invertirArreglo(int A[], int validos)
+{
+    for (int i = 0; i < validos / 2; i++)
+    {
+        int aux = A[i];
+        A[i] = A[validos - 1 - i];
+        A[validos - 1 - i] = aux;
+    }
+}
+
+// Ordenamiento por selección
+void ordenarSeleccion(int A[], int validos)
+{
+    for (int i = 0; i < validos - 1; i++)
+    {
+        int min = i;
+        for (int j = i + 1; j < validos; j++)
+        {
+            if (A[j] < A[min])
+                min = j;
+        }
+        if (min != i)
+        {
+            int temp = A[i];
+            A[i] = A[min];
+            A[min] = temp;
+        }
+    }
+}
+
+// Ordenamiento por inserción
+void ordenarInsercion(int A[], int validos)
+{
+    for (int i = 1; i < validos; i++)
+    {
+        int key = A[i];
+        int j = i - 1;
+        while (j >= 0 && A[j] > key)
+        {
+            A[j + 1] = A[j];
+            j--;
+        }
+        A[j + 1] = key;
+    }
+}
+
+// Intercala dos arreglos de chars ordenados en uno nuevo, también ordenado
+int intercalarArreglos(char A[], int validosA, char B[], int validosB, char C[])
+{
+    int i = 0, j = 0, k = 0;
+    while (i < validosA && j < validosB)
+    {
+        if (A[i] < B[j])
+            C[k++] = A[i++];
+        else
+            C[k++] = B[j++];
+    }
+    while (i < validosA) C[k++] = A[i++];
+    while (j < validosB) C[k++] = B[j++];
+    return k; // Retorna la cantidad de elementos en C
+}
+
+// Genera vector acumulativo como {1,6,12,19,27}
+void generarAcumulado(int A[], int validos, int resultado[])
+{
+    int suma = 0;
+    for (int i = 0; i < validos; i++)
+    {
+        suma += A[i];
+        resultado[i] = suma;
+    }
+}
