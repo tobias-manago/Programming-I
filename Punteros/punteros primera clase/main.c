@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../../../../../../Downloads/Librerias/pila.h"
+#include "pila.h"
 void intercambioPorReferencia (int* p1, int* p2);
 
 int main()
