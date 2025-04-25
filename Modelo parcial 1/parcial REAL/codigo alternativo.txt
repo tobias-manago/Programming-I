@@ -5,15 +5,17 @@
 // Prototipo que respeta el enunciado
 Pila cargarpilas(Pila A, Pila* B);
 
-int main()
+int master()
 {
     Pila A;
+    Pila* P;
     Pila B;
+    P = &B;
 
     inicpila(&A);
     inicpila(&B);
 
-    A = cargarpilas(A, &B); // Recibe A por copia, B por referencia, retorna A modificada
+    A = cargarpilas(A, P); // Recibe A por copia, B por referencia, retorna A modificada
 
     printf("\nMostrando pila A (pasada por copia):\n");
     mostrar(&A);
@@ -21,12 +23,6 @@ int main()
     printf("\nMostrando pila B (pasada por referencia):\n");
     mostrar(&B);
 
-    int menor = EncontrarElMenor(A);
-
-     printf("\nMostrando pila A (despues de la busqueda del menor):\n");
-    mostrar(&A);
-
-    printf("el menor es: %d",menor);
     return 0;
 }
 
@@ -61,30 +57,4 @@ Pila cargarpilas(Pila A, Pila* B)
     }
 
     return A;
-}
-int EncontrarElMenor(Pila A)
-{
-    Pila Aux;
-    Pila Basura;
-    inicpila(&Basura);
-    inicpila(&Aux);
-    int menor;
-    menor = tope(&A);
-    while(!pilavacia(&A))
-    {
-        if(menor>tope(&A))
-        {
-            menor = tope(&A);
-        }
-        apilar(&Aux, desapilar(&A));
-    }
-    while(!pilavacia(&Aux))
-    {
-        if(menor == tope(&Aux) )
-        {
-            apilar(&Basura, desapilar(&Aux));
-        }
-        apilar(&A, desapilar(&Aux));
-    }
-    return menor;
 }
