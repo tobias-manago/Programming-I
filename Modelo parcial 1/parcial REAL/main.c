@@ -4,6 +4,8 @@
 
 // Prototipo que respeta el enunciado
 Pila cargarpilas(Pila A, Pila* B);
+int EncontrarElMenor(Pila* A);
+void arregloOrdenado(int arreglo[],int dim,Pila* A);
 
 int main()
 {
@@ -21,12 +23,10 @@ int main()
     printf("\nMostrando pila B (pasada por referencia):\n");
     mostrar(&B);
 
-    int menor = EncontrarElMenor(A);
+    int menor = EncontrarElMenor(&A);
 
-     printf("\nMostrando pila A (despues de la busqueda del menor):\n");
-    mostrar(&A);
-
-    printf("el menor es: %d",menor);
+    int arreglo[10];
+    arregloOrdenado(arreglo, 10, &A);
     return 0;
 }
 
@@ -62,21 +62,21 @@ Pila cargarpilas(Pila A, Pila* B)
 
     return A;
 }
-int EncontrarElMenor(Pila A)
+int EncontrarElMenor(Pila* A)
 {
     Pila Aux;
     Pila Basura;
     inicpila(&Basura);
     inicpila(&Aux);
     int menor;
-    menor = tope(&A);
-    while(!pilavacia(&A))
+    menor = tope(A);
+    while(!pilavacia(A))
     {
-        if(menor>tope(&A))
+        if(menor>tope(A))
         {
-            menor = tope(&A);
+            menor = tope(A);
         }
-        apilar(&Aux, desapilar(&A));
+        apilar(&Aux, desapilar(A));
     }
     while(!pilavacia(&Aux))
     {
@@ -84,7 +84,26 @@ int EncontrarElMenor(Pila A)
         {
             apilar(&Basura, desapilar(&Aux));
         }
-        apilar(&A, desapilar(&Aux));
+        apilar(A, desapilar(&Aux));
     }
     return menor;
+}
+
+void arregloOrdenado(int arreglo[],int dim,Pila* A)
+{
+    int validos = 0;
+    for(int i = 0; i<dim ; i++)
+    {
+        arreglo[i] = EncontrarElMenor(&A);
+    }
+    printf("Contenido del arreglo: [ ");
+   for (int i = 0; i < validos; i++)
+    {
+        printf("%d", arreglo[i]);
+        if (i < validos - 1)
+        {
+            printf(", ");
+        }
+    }
+    printf(" ]\n");
 }
