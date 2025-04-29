@@ -5,7 +5,8 @@
 // Prototipo que respeta el enunciado
 Pila cargarpilas(Pila A, Pila* B);
 int EncontrarElMenor(Pila* A);
-void arregloOrdenado(int arreglo[],int dim,Pila* A);
+int ordenarArreglo(Pila* A,int arreglo[],int dim);
+void mostrarArreglo(int arreglo[],int validos);
 
 int main()
 {
@@ -25,8 +26,16 @@ int main()
 
     int menor = EncontrarElMenor(&A);
 
+    printf("\nMostrando pila A (despues de la busqueda del menor):\n");
+    mostrar(&A);
+
+    printf("el menor es: %d",menor);
+
     int arreglo[10];
-    arregloOrdenado(arreglo, 10, &A);
+
+    int validos = ordenarArreglo(&A,arreglo,10);
+
+    mostrarArreglo(arreglo,validos);
     return 0;
 }
 
@@ -42,15 +51,15 @@ Pila cargarpilas(Pila A, Pila* B)
 
         int dato = tope(&Aux);
 
-        if(dato > 0 && dato % 3 == 0) // positivo y múltiplo de 3
+        if(dato > 0 && dato % 3 == 0)
         {
             apilar(B, desapilar(&Aux));
         }
-        else if(dato > 0) // positivo pero no múltiplo de 3
+        else if(dato > 0)
         {
             apilar(&A, desapilar(&Aux));
         }
-        else // negativo
+        else
         {
             printf("Sólo se pueden ingresar números positivos.\n");
         }
@@ -66,9 +75,11 @@ int EncontrarElMenor(Pila* A)
 {
     Pila Aux;
     Pila Basura;
-    inicpila(&Basura);
     inicpila(&Aux);
+    inicpila(&Basura);
+
     int menor;
+
     menor = tope(A);
     while(!pilavacia(A))
     {
@@ -80,30 +91,35 @@ int EncontrarElMenor(Pila* A)
     }
     while(!pilavacia(&Aux))
     {
-        if(menor == tope(&Aux) )
+        if (tope(&Aux) == menor)
         {
             apilar(&Basura, desapilar(&Aux));
         }
-        apilar(A, desapilar(&Aux));
+        apilar(A,desapilar(&Aux));
     }
     return menor;
 }
-
-void arregloOrdenado(int arreglo[],int dim,Pila* A)
+int ordenarArreglo(Pila* A,int arreglo[],int dim)
 {
-    int validos = 0;
-    for(int i = 0; i<dim ; i++)
+    int i = 0;
+    while((!pilavacia(A)) && (i < dim))
     {
-        arreglo[i] = EncontrarElMenor(&A);
+        arreglo[i] = EncontrarElMenor(A);
+        i++;
     }
-    printf("Contenido del arreglo: [ ");
-   for (int i = 0; i < validos; i++)
+    return i;
+}
+void mostrarArreglo(int arreglo[], int validos)
+{
+    printf("\n[");
+    for(int i = 0; i < validos; i++)
     {
         printf("%d", arreglo[i]);
-        if (i < validos - 1)
+        if(i < validos - 1)
         {
             printf(", ");
         }
     }
-    printf(" ]\n");
+    printf("]\n");
 }
+
