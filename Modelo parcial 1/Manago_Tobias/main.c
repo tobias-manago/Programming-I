@@ -1,78 +1,60 @@
-/// Tobias Manago
 #include <stdio.h>
 #include <stdlib.h>
 #include "pila.h"
 
-#define CARRERAS 15
+// Prototipo que respeta el enunciado
+Pila cargarpilas(Pila A, Pila* B);
 
-int TiemposCarreras(float TiemposFinales[CARRERAS]);
-void FunMejorTiempo(float TiemposCarreras[CARRERAS],int validos,float* PMejorTiempo);
-float SumatoriaTiempos(float TiemposCarreras[],int validos);
-void FunPromedioTiempos(float TiemposCarreras[],int validos);
-
-int main()
+int master()
 {
-    float TiemposFinales [CARRERAS];
+    Pila A;
+    Pila* P;
+    Pila B;
+    P = &B;
 
-    int validos = TiemposCarreras(TiemposFinales);
+    inicpila(&A);
+    inicpila(&B);
 
-    float MejorTiempo;
-    float* PMejorTiempo = &MejorTiempo;
+    A = cargarpilas(A, P); // Recibe A por copia, B por referencia, retorna A modificada
 
-    FunMejorTiempo(TiemposFinales,validos,PMejorTiempo);
-    printf("el mejor tiempo fue %.2f \n",MejorTiempo);
-    FunPromedioTiempos(TiemposFinales,validos);
+    printf("\nMostrando pila A (pasada por copia):\n");
+    mostrar(&A);
+
+    printf("\nMostrando pila B (pasada por referencia):\n");
+    mostrar(&B);
 
     return 0;
 }
 
-int TiemposCarreras(float TiemposFinales[CARRERAS])
+Pila cargarpilas(Pila A, Pila* B)
 {
-    int i = 0;
     char opcion = 's';
 
-    while((opcion == 's' || opcion == 'S') && (i < CARRERAS))
+    while(opcion == 's' || opcion == 'S')
     {
-        printf("cual fue el tiempo final de tu carrera: ");
-        scanf("%f",&TiemposFinales[i]);
-        i++;
-        printf("¿desea cargar otra carrera mas? [s/n]: ");
-        fflush(stdin);
-        scanf("%c",&opcion);
-    }
-    return i;
-}
+        Pila Aux;
+        inicpila(&Aux);
+        leer(&Aux);
 
-void FunMejorTiempo(float TiemposCarreras[],int validos,float* PMejorTiempo)
-{
-    int i = 0;
-    *PMejorTiempo = TiemposCarreras[i];
-    for(int i = 0; i < validos; i++)
-    {
-        if (TiemposCarreras[i] < *PMejorTiempo)
+        int dato = tope(&Aux);
+
+        if(dato > 0 && dato % 3 == 0) // positivo y múltiplo de 3
         {
-            *PMejorTiempo = TiemposCarreras[i];
+            apilar(B, desapilar(&Aux));
         }
+        else if(dato > 0) // positivo pero no múltiplo de 3
+        {
+            apilar(&A, desapilar(&Aux));
+        }
+        else // negativo
+        {
+            printf("Sólo se pueden ingresar números positivos.\n");
+        }
+
+        printf("¿Desea seguir cargando datos? [s/n]: ");
+        fflush(stdin);
+        scanf(" %c", &opcion);
     }
+
+    return A;
 }
-float SumatoriaTiempos(float TiemposCarreras[],int validos)
-{
-    float sumatoria;
-
-    for(int i = 0 ; i < validos ; i++)
-    {
-        sumatoria+=TiemposCarreras[i];
-    }
-
-    return sumatoria;
-}
-
-void FunPromedioTiempos(float Tiemposfinales[],int validos)
-{
-    float sumatoria = SumatoriaTiempos(Tiemposfinales,validos);
-    float promedio = sumatoria / validos;
-
-
-    printf("el promedio es: %.2f ",promedio);
-}
-

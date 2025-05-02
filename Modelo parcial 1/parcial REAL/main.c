@@ -6,11 +6,17 @@
 // Prototipo que respeta el enunciado
 Pila cargarpilas(Pila A, Pila* B);
 int EncontrarElMenor(Pila* A);
+<<<<<<< Updated upstream
 int ordenarArreglo(Pila* A,int arreglo[],int dim);
 void mostrarArreglo(int arreglo[],int validos);
 int EncontrarDatoDado(int arreglo[],int datoDado, int validos);
 void CargarMatrizConArray(int matriz[DIMCOLS][DIMROWS],int arreglo[],int validos);
 void mostrarMatriz(int Matriz[DIMROWS][DIMCOLS]);
+=======
+int ordenarArray(Pila* A,int arreglo[],int dim);
+void mostrarArreglo(int arreglo[],int validos);
+
+>>>>>>> Stashed changes
 int main()
 {
     Pila A;
@@ -27,7 +33,11 @@ int main()
     printf("\nMostrando pila B (pasada por referencia):\n");
     mostrar(&B);
 
+<<<<<<< Updated upstream
     int arreglo[10];
+=======
+    int menor = EncontrarElMenor(&A);
+>>>>>>> Stashed changes
 
     int validos = ordenarArreglo(&A,arreglo,10);
 
@@ -51,6 +61,14 @@ int main()
     CargarMatrizConArray(matriz,arreglo,validos);
     mostrarMatriz(matriz);
 
+<<<<<<< Updated upstream
+=======
+    printf("el menor es: %d",menor);
+
+    int arreglo[10];
+    int validos = ordenarArray(&A,arreglo,10);
+    mostrarArreglo(arreglo,validos);
+>>>>>>> Stashed changes
     return 0;
 }
 
@@ -92,10 +110,21 @@ int EncontrarElMenor(Pila* A)
     inicpila(&Aux);
 
     int menor;
+<<<<<<< Updated upstream
 
     if(!pilavacia(A))
     {
         menor = desapilar(A);
+=======
+    menor = tope(A);
+    while(!pilavacia(A))
+    {
+        if(menor>tope(A))
+        {
+            menor = tope(A);
+        }
+        apilar(&Aux, desapilar(A));
+>>>>>>> Stashed changes
     }
     while(!pilavacia(A))
     {
@@ -108,6 +137,10 @@ int EncontrarElMenor(Pila* A)
         {
             apilar(&Aux, desapilar(A));
         }
+<<<<<<< Updated upstream
+=======
+        apilar(A, desapilar(&Aux));
+>>>>>>> Stashed changes
     }
 
     while (!pilavacia(&Aux))
@@ -117,11 +150,16 @@ int EncontrarElMenor(Pila* A)
 
     return menor;
 }
+<<<<<<< Updated upstream
 int ordenarArreglo(Pila* A,int arreglo[],int dim)
+=======
+int ordenarArray(Pila* A,int arreglo[],int dim)
+>>>>>>> Stashed changes
 {
     int i = 0;
     while((!pilavacia(A)) && (i < dim))
     {
+<<<<<<< Updated upstream
         arreglo[i] = EncontrarElMenor(A);
         i++;
     }
@@ -200,4 +238,20 @@ void mostrarMatriz(int Matriz[DIMROWS][DIMCOLS])
             printf("%d,", Matriz[i][j]);
         }
     }
+=======
+        arreglo[i]=EncontrarElMenor(A);
+        i++;
+    }
+    printf("%d",i);
+    return i;
+}
+void mostrarArreglo(int arreglo[],int validos)
+{
+    printf("[");
+    for(int i = 0;i < validos;i++)
+    {
+        printf("%d, ",arreglo[i]);
+    }
+    printf("]");
+>>>>>>> Stashed changes
 }

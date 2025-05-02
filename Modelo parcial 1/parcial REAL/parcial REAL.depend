@@ -1,4 +1,5 @@
 # depslib dependency file v1.0
+<<<<<<< Updated upstream
 1490112217 source:c:\users\tqman\documents\github\programming-i\modelo parcial 1\parcial real\pila.c
 	"pila.h"
 
@@ -7,15 +8,21 @@
 	<malloc.h>
 
 1745880434 source:c:\users\tqman\documents\github\programming-i\modelo parcial 1\parcial real\main.c
+=======
+1745869758 source:c:\users\tqman\onedrive\documentos\github\programming-i\modelo parcial 1\parcial real\main.c
+>>>>>>> Stashed changes
 	<stdio.h>
 	<stdlib.h>
 	"pila.h"
 
+<<<<<<< Updated upstream
 1745948451 source:c:\users\tqman\onedrive\documentos\github\programming-i\modelo parcial 1\parcial real\main.c
 	<stdio.h>
 	<stdlib.h>
 	"pila.h"
 
+=======
+>>>>>>> Stashed changes
 1745593871 c:\users\tqman\onedrive\documentos\github\programming-i\modelo parcial 1\parcial real\pila.h
 	<stdio.h>
 	<malloc.h>
