@@ -1,13 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pila.h"
-
+#define DIMCOLS 5
+#define DIMROWS 5
 // Prototipo que respeta el enunciado
 Pila cargarpilas(Pila A, Pila* B);
 int EncontrarElMenor(Pila* A);
 int ordenarArreglo(Pila* A,int arreglo[],int dim);
 void mostrarArreglo(int arreglo[],int validos);
-
+int EncontrarDatoDado(int arreglo[],int datoDado, int validos);
+void CargarMatrizConArray(int matriz[DIMCOLS][DIMROWS],int arreglo[],int validos);
+void mostrarMatriz(int Matriz[DIMROWS][DIMCOLS]);
 int main()
 {
     Pila A;
@@ -24,18 +27,30 @@ int main()
     printf("\nMostrando pila B (pasada por referencia):\n");
     mostrar(&B);
 
-    int menor = EncontrarElMenor(&A);
-
-    printf("\nMostrando pila A (despues de la busqueda del menor):\n");
-    mostrar(&A);
-
-    printf("el menor es: %d",menor);
-
     int arreglo[10];
 
     int validos = ordenarArreglo(&A,arreglo,10);
 
     mostrarArreglo(arreglo,validos);
+
+    int datoDado;
+
+    printf("que dato desea encontrar adentro del arreglo: ");
+    scanf("%d",&datoDado);
+
+    int Rtn = EncontrarDatoDado(arreglo, datoDado, validos);
+    if(Rtn == 1)
+    {
+        printf("\nel dato buscado esta dentro del arreglo");
+    }
+    else
+    {
+        printf("\nel dato buscado NO esta dentro del arreglo");
+    }
+    int matriz[DIMCOLS][DIMROWS]={0};
+    CargarMatrizConArray(matriz,arreglo,validos);
+    mostrarMatriz(matriz);
+
     return 0;
 }
 
@@ -74,29 +89,32 @@ Pila cargarpilas(Pila A, Pila* B)
 int EncontrarElMenor(Pila* A)
 {
     Pila Aux;
-    Pila Basura;
     inicpila(&Aux);
-    inicpila(&Basura);
 
     int menor;
 
-    menor = tope(A);
+    if(!pilavacia(A))
+    {
+        menor = desapilar(A);
+    }
     while(!pilavacia(A))
     {
         if(menor>tope(A))
         {
-            menor = tope(A);
+            apilar(&Aux, menor);
+            menor = desapilar(A);
         }
-        apilar(&Aux, desapilar(A));
-    }
-    while(!pilavacia(&Aux))
-    {
-        if (tope(&Aux) == menor)
+        else
         {
-            apilar(&Basura, desapilar(&Aux));
+            apilar(&Aux, desapilar(A));
         }
-        apilar(A,desapilar(&Aux));
     }
+
+    while (!pilavacia(&Aux))
+    {
+        apilar(A, desapilar(&Aux));
+    }
+
     return menor;
 }
 int ordenarArreglo(Pila* A,int arreglo[],int dim)
@@ -122,4 +140,64 @@ void mostrarArreglo(int arreglo[], int validos)
     }
     printf("]\n");
 }
+int EncontrarDatoDado(int arreglo[],int datoDado, int validos)
+{
+    int TorF;
 
+    for(int i=0; i<validos; i++)
+    {
+        if(datoDado == arreglo[i])
+        {
+            TorF = 1;
+        }
+        else
+        {
+            TorF = 0;
+
+        }
+    }
+    return TorF;
+}
+void CargarMatrizConArray(int matriz[DIMCOLS][DIMROWS],int arreglo[],int validos)
+{
+    //int f=0;
+   /* for(int i = 0; i < DIMROWS && arreglo[i]<validos; i++)
+    {
+        for(int j = 0; j < DIMCOLS && f<validos; j++)
+        {
+            if(arreglo[f] > 2 && arreglo[f] < 50)
+            {
+                matriz[i][j] = arreglo[f];
+            }
+            f++;
+        }
+    }*/
+    int f=0;
+    int i=0;
+    while(f<DIMROWS && i<validos)
+    {
+        int c=0;
+        while(c<DIMCOLS && i<validos)
+        {
+            if(arreglo[i] >= 2 && arreglo[i] <= 50)
+            {
+                matriz[f][c] = arreglo[i];
+                c++;
+            }
+            i++;
+        }
+        f++;
+
+    }
+}
+void mostrarMatriz(int Matriz[DIMROWS][DIMCOLS])
+{
+    for(int i = 0; i < DIMROWS; i++)
+    {
+        printf("\n");
+        for(int j = 0; j < DIMCOLS; j++)
+        {
+            printf("%d,", Matriz[i][j]);
+        }
+    }
+}
