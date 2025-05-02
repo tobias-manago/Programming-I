@@ -11,3 +11,15 @@
 	<stdlib.h>
 	"pila.h"
 
+1745948451 source:c:\users\tqman\onedrive\documentos\github\programming-i\modelo parcial 1\parcial real\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pila.h"
+
+1745593871 c:\users\tqman\onedrive\documentos\github\programming-i\modelo parcial 1\parcial real\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1745593871 source:c:\users\tqman\onedrive\documentos\github\programming-i\modelo parcial 1\parcial real\pila.c
+	"pila.h"
+
