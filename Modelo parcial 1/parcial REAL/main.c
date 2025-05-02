@@ -7,12 +7,15 @@
 Pila cargarpilas(Pila A, Pila* B);
 int EncontrarElMenor(Pila* A);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 int ordenarArreglo(Pila* A,int arreglo[],int dim);
 void mostrarArreglo(int arreglo[],int validos);
 int EncontrarDatoDado(int arreglo[],int datoDado, int validos);
 void CargarMatrizConArray(int matriz[DIMCOLS][DIMROWS],int arreglo[],int validos);
 void mostrarMatriz(int Matriz[DIMROWS][DIMCOLS]);
 =======
+=======
+>>>>>>> Stashed changes
 int ordenarArray(Pila* A,int arreglo[],int dim);
 void mostrarArreglo(int arreglo[],int validos);
 
@@ -34,7 +37,11 @@ int main()
     mostrar(&B);
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     int arreglo[10];
+=======
+    int menor = EncontrarElMenor(&A);
+>>>>>>> Stashed changes
 =======
     int menor = EncontrarElMenor(&A);
 >>>>>>> Stashed changes
@@ -68,6 +75,9 @@ int main()
     int arreglo[10];
     int validos = ordenarArray(&A,arreglo,10);
     mostrarArreglo(arreglo,validos);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     return 0;
 }
@@ -111,10 +121,14 @@ int EncontrarElMenor(Pila* A)
 
     int menor;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
     if(!pilavacia(A))
     {
         menor = desapilar(A);
+=======
+    menor = tope(A);
+    while(!pilavacia(A))
 =======
     menor = tope(A);
     while(!pilavacia(A))
@@ -124,6 +138,19 @@ int EncontrarElMenor(Pila* A)
             menor = tope(A);
         }
         apilar(&Aux, desapilar(A));
+    }
+    while(!pilavacia(&Aux))
+>>>>>>> Stashed changes
+    {
+        if(menor>tope(A))
+        {
+            menor = tope(A);
+        }
+<<<<<<< Updated upstream
+        apilar(&Aux, desapilar(A));
+>>>>>>> Stashed changes
+=======
+        apilar(A, desapilar(&Aux));
 >>>>>>> Stashed changes
     }
     while(!pilavacia(A))
@@ -151,7 +178,11 @@ int EncontrarElMenor(Pila* A)
     return menor;
 }
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 int ordenarArreglo(Pila* A,int arreglo[],int dim)
+=======
+int ordenarArray(Pila* A,int arreglo[],int dim)
+>>>>>>> Stashed changes
 =======
 int ordenarArray(Pila* A,int arreglo[],int dim)
 >>>>>>> Stashed changes
@@ -159,6 +190,7 @@ int ordenarArray(Pila* A,int arreglo[],int dim)
     int i = 0;
     while((!pilavacia(A)) && (i < dim))
     {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
         arreglo[i] = EncontrarElMenor(A);
         i++;
@@ -239,6 +271,8 @@ void mostrarMatriz(int Matriz[DIMROWS][DIMCOLS])
         }
     }
 =======
+=======
+>>>>>>> Stashed changes
         arreglo[i]=EncontrarElMenor(A);
         i++;
     }
@@ -253,5 +287,8 @@ void mostrarArreglo(int arreglo[],int validos)
         printf("%d, ",arreglo[i]);
     }
     printf("]");
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 }
