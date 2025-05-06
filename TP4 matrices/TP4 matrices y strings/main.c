@@ -4,7 +4,12 @@
 
 #define DIMROWS 3
 #define DIMCOLS 3
+void cargarMatriz(int M[DIMROWS][DIMCOLS]);
+void mostrarMatriz(int M[DIMROWS][DIMCOLS]);
+void cargar_la_matriz_con_numeros_random(int M1[DIMROWS][DIMCOLS]);
+void mostrarMatriz1(int M1[DIMROWS][DIMCOLS]);
 float promedio_Matriz (int M[DIMROWS][DIMCOLS]);
+int saber_si_tiene_un_dato(int M[DIMROWS][DIMCOLS],int dato);
 int main()
 
 {
@@ -24,6 +29,8 @@ int main()
     scanf("%d",&dado);
     int TorF = saber_si_tiene_un_dato(M,dado);
     printf("\n si muestra 1 esta el dato, si muestra 0 no esta: %d",TorF);
+
+
 
     return 0;
 }
@@ -128,6 +135,9 @@ int saber_si_tiene_un_dato(int M[DIMROWS][DIMCOLS],int dato)
     }
     return TorF;
 }
+int cargarStrings()
+{
+    char opcion = 's';
 
-
-
+     while()
+}
