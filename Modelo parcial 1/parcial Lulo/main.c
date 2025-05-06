@@ -81,11 +81,11 @@ void parOimpar(int validos,int arreglo[],int* pares,int* impares)///funcion 2
     {
         if(arreglo[i]%2 == 0)
         {
-            *pares = *pares + 1;
+            (*pares)++;
         }
         else
         {
-            *impares = *impares + 1;
+            (*impares)++;
         }
     }
 }
