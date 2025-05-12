@@ -160,18 +160,6 @@ int EncontrarDatoDado(int arreglo[],int datoDado, int validos)
 }
 void CargarMatrizConArray(int matriz[DIMCOLS][DIMROWS],int arreglo[],int validos)
 {
-    //int f=0;
-   /* for(int i = 0; i < DIMROWS && arreglo[i]<validos; i++)
-    {
-        for(int j = 0; j < DIMCOLS && f<validos; j++)
-        {
-            if(arreglo[f] > 2 && arreglo[f] < 50)
-            {
-                matriz[i][j] = arreglo[f];
-            }
-            f++;
-        }
-    }*/
     int f=0;
     int i=0;
     while(f<DIMROWS && i<validos)
@@ -197,6 +185,7 @@ void mostrarMatriz(int Matriz[DIMROWS][DIMCOLS])
         printf("\n");
         for(int j = 0; j < DIMCOLS; j++)
         {
+            if(Matriz[i][j] != 0)
             printf("%d,", Matriz[i][j]);
         }
     }

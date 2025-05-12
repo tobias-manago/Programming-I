@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1490112217 source:c:\users\tqman\documents\github\programming-i\modelo parcial 1\parcial practica\parcial practica\pila.c
+	"pila.h"
+
+1490112217 c:\users\tqman\documents\github\programming-i\modelo parcial 1\parcial practica\parcial practica\pila.h
+	<stdio.h>
+	<malloc.h>
+
+1746496589 source:c:\users\tqman\documents\github\programming-i\modelo parcial 1\parcial practica\parcial practica\main.c
+	<stdio.h>
+	<stdlib.h>
+	"pila.h"
+
