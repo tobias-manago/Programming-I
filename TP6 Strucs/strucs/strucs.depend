@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1747067236 source:c:\users\tqman\onedrive\documentos\github\programming-i\tp6 strucs\strucs\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
