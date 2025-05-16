@@ -24,7 +24,7 @@ int main()
     ///punto 2
     mostrarArchivo(A);
     ///punto 3
-    //cargarArchivoAlumnos();
+    cargarArchivoAlumnos();
     mostrarArchivoAlumnos();
     int tamanio = cantidadDeArchivos();
     printf("\nLa cantidad de archivos es de : %i ",tamanio);
@@ -153,7 +153,7 @@ int cantidadDeArchivos() ///funcion punto 3
     }
     else
     {
-        fseek(buffer, 0, SEEK_END);
+        fseek(buffer, 0 ,SEEK_END);
 
         tamanio = (ftell(buffer)) / (sizeof(StAlumno));
 
