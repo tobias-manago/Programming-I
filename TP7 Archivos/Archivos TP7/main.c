@@ -15,19 +15,24 @@ void cargarunAlumnoSinParametro();
 void cargarArchivoAlumnos ();
 void mostrarArchivoAlumnos();
 int cantidadDeArchivos();
+int Pasar_de_archivo_a_arreglo(StAlumno alumnos[],int dim);
 ///prototipados
 int main()
 {
     ///punto 1
     int A = 2;
-    guardarUnDatoEnArchivo(A);
+    //guardarUnDatoEnArchivo(A);
     ///punto 2
-    mostrarArchivo(A);
+    //mostrarArchivo(A);
     ///punto 3
-    cargarArchivoAlumnos();
+    //cargarArchivoAlumnos();
     mostrarArchivoAlumnos();
     int tamanio = cantidadDeArchivos();
     printf("\nLa cantidad de archivos es de : %i ",tamanio);
+    ///punto inventado
+    StAlumno alumnos[10];
+    int validosA = Pasar_de_archivo_a_arreglo(alumnos,10);
+    mostrarArregloAlumnos(alumnos,validosA);
 
 
     return 0;
@@ -128,8 +133,6 @@ if (buffer != NULL)
 {
     while (fread(&alumno,sizeof(StAlumno),1,buffer) > 0)
     {
-
-
         printf("\n**************** Archivos de alumnos ***************************\n");
         printf("\n**************** Mostrando alumno ******************************\n");
         mostrarunAlumno(alumno);
@@ -161,4 +164,35 @@ int cantidadDeArchivos() ///funcion punto 3
     }
 
     return tamanio;
+}
+int Pasar_de_archivo_a_arreglo(StAlumno alumnos[],int dim)
+{
+    FILE* buffer;
+    buffer = fopen("archivoAlumnos","rb");
+    StAlumno alumno;
+    int i = 0;
+    if(buffer==NULL)
+    {
+        printf("Algo fallo :(");
+    }
+    else
+    {
+        while(fread(&alumno,sizeof(StAlumno),1,buffer) > 0)
+        {
+           alumnos[i] = alumno;
+            i++;
+        }
+    }
+    return i;
+}
+void mostrarArregloAlumnos(StAlumno alumnos[], int validos)
+{
+    int i;
+
+    for(i=0; i<validos; i++)
+    {
+        printf("\n**************** Arreglo de alumnos ***************************\n");
+        printf("\n**************** Mostrando alumno Nro %i **********************\n", i+1);
+        mostrarunAlumno(alumnos[i]);
+    }
 }
