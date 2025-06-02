@@ -87,7 +87,7 @@ void cargarunAlumnoSinParametro(StAlumno* alumno)
 void cargarArchivoAlumnos()
 {
 
-StAlumno alumno;
+    StAlumno alumno;
     char opcion ='s';
 
     FILE* buffer;
@@ -95,17 +95,17 @@ StAlumno alumno;
 
     if(buffer!=NULL)
     {
-    while (opcion=='s')
-    {
-        cargarunAlumnoSinParametro(&alumno);
+        while (opcion=='s')
+        {
+            cargarunAlumnoSinParametro(&alumno);
 
-        fwrite(&alumno,sizeof(StAlumno),1,buffer);
+            fwrite(&alumno,sizeof(StAlumno),1,buffer);
 
-        printf("\nQuiere seguir cargando datos? presione [s/n]: ");
-        fflush(stdin);
-        scanf("%c", &opcion);
-    }
-    fclose(buffer);
+            printf("\nQuiere seguir cargando datos? presione [s/n]: ");
+            fflush(stdin);
+            scanf("%c", &opcion);
+        }
+        fclose(buffer);
     }
     else
         printf("algo fallo :(");
@@ -129,19 +129,19 @@ void mostrarArchivoAlumnos()
 
     FILE* buffer;
     buffer = fopen("archivoAlumnos","rb");
-if (buffer != NULL)
-{
-    while (fread(&alumno,sizeof(StAlumno),1,buffer) > 0)
+    if (buffer != NULL)
     {
-        printf("\n**************** Archivos de alumnos ***************************\n");
-        printf("\n**************** Mostrando alumno ******************************\n");
-        mostrarunAlumno(alumno);
-    }
+        while (fread(&alumno,sizeof(StAlumno),1,buffer) > 0)
+        {
+            printf("\n**************** Archivos de alumnos ***************************\n");
+            printf("\n**************** Mostrando alumno ******************************\n");
+            mostrarunAlumno(alumno);
+        }
 
-    fclose(buffer);
-}
-else
-    printf("no se abrio");
+        fclose(buffer);
+    }
+    else
+        printf("no se abrio");
 
 }
 int cantidadDeArchivos() ///funcion punto 3
@@ -156,7 +156,7 @@ int cantidadDeArchivos() ///funcion punto 3
     }
     else
     {
-        fseek(buffer, 0 ,SEEK_END);
+        fseek(buffer, 0,SEEK_END);
 
         tamanio = (ftell(buffer)) / (sizeof(StAlumno));
 
@@ -179,7 +179,7 @@ int Pasar_de_archivo_a_arreglo(StAlumno alumnos[],int dim)
     {
         while(fread(&alumno,sizeof(StAlumno),1,buffer) > 0)
         {
-           alumnos[i] = alumno;
+            alumnos[i] = alumno;
             i++;
         }
     }
