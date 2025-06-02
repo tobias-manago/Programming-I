@@ -196,3 +196,42 @@ void mostrarArregloAlumnos(StAlumno alumnos[], int validos)
         mostrarunAlumno(alumnos[i]);
     }
 }
+void modificar_entero_Archivo_Buscado()
+{
+    int Aux;
+    int flag = 0;
+    FILE* buffer= fopen("archivo","r+b");
+    if(buffer==NULL)
+    {
+        printf("algo salio mal :(");
+    }
+    else
+    {
+        while(flag == 0 && fread(&Aux,sizeof(int),1,buffer)>0)
+        {
+            if(Aux==datoBuscado)
+            {
+                flag = 1;
+                fseek(buffer,(-1)*sizeof(int),SEEK_CUR);
+                fwrite(&nuevoValor,sizeof(int),1,buffer);
+            }
+        }
+        fclose(buffer);
+    }
+}
+void modificar_entero_Archivo_Sabiendo_posicion()
+{
+    int Aux;
+    int flag = 0;
+    FILE* buffer= fopen("archivo","r+b");
+    if(buffer==NULL)
+    {
+        printf("algo salio mal :(");
+    }
+    else
+    {
+        fseek(buffer,(posicion-1)*sizeof(int),SEEK_SET);
+    }
+    fclose(buffer);
+}
+}
