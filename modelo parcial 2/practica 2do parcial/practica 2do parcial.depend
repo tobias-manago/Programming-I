@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1748908409 source:c:\users\tqman\documents\github\programming-i\modelo parcial 2\practica 2do parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

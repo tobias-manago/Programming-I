@@ -124,7 +124,6 @@ void mostrarunAlumno(StAlumno alumno)
 }
 void mostrarArchivoAlumnos()
 {
-    int i;
     StAlumno alumno;
 
     FILE* buffer;
