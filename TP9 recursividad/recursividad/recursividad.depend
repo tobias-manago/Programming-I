@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1749573900 source:c:\users\tqman\documents\github\programming-i\tp9 recursividad\recursividad\main.c
+	<stdio.h>
+	<stdlib.h>
+
