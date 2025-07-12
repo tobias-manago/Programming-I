@@ -21,7 +21,7 @@ void modificacion_en_pelis(int id_pelicula);
 ///prototipados
 int main()
 {
-    //cargar_peliculas();
+    cargar_peliculas();
     mostrar_peliculas();
 
     int id_buscado;

@@ -195,7 +195,7 @@ void mostrarArregloAlumnos(StAlumno alumnos[], int validos)
         mostrarunAlumno(alumnos[i]);
     }
 }
-void modificar_entero_Archivo_Buscado()
+/*void modificar_entero_Archivo_Buscado(int datoBuscado)
 {
     int Aux;
     int flag = 0;
@@ -232,5 +232,4 @@ void modificar_entero_Archivo_Sabiendo_posicion()
         fseek(buffer,(posicion-1)*sizeof(int),SEEK_SET);
     }
     fclose(buffer);
-}
-}
+}*/

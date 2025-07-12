@@ -46,12 +46,12 @@ int main()
     return 0;
 }
 
-int NumRandom ()
+int NumRandom()
 {
     return rand() %101;
 }
 
-void tresNumeros ()
+void tresNumeros()
 {
     int num1, num2, num3;
     printf("\n ingresa 3 numeros  \n ");
@@ -80,7 +80,7 @@ void tresNumeros ()
     }
 }
 
-int SumarMenoresPositivos(N)
+int SumarMenoresPositivos(int N)
 {
     int suma = 0;
     for (int i = 1; i <= N; i++)
@@ -89,7 +89,7 @@ int SumarMenoresPositivos(N)
     }
     return suma;
 }
-void tablaFor(multiplo)
+void tablaFor(int multiplo)
 {
     int Resultado;
     for ( int i=1 ; i<11 ; i++ )

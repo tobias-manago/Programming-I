@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1752282757 source:c:\users\tqman\documents\github\programming-i\modelo final\tobias_manago\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
