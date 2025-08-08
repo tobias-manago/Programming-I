@@ -17,18 +17,29 @@ void cargar_jedis();
 void mostrar_jedi(StJedi jedi);
 void mostrar_jedis();
 int Legajo_repetido(int Legajo_buscado);
-int cantidad_en_planeta(int planeta_buscado);
+void cantidad_en_planeta(int planeta_buscado);
+void mostrar_arreglo_jedis(StJedi jedi[],int validos);
+void intercambiar_jedis(StJedi* a, StJedi* b);
+int buscar_pos_min_legajo(StJedi arr[], int desde, int validos);
+void ordenar_jedis_por_legajo(StJedi arr[], int validos);
+int contarRegistros(int edad);
 
 ///prototipados
 
 int main()
 {
-    int planeta_buscado;
+    int planetaBuscado;
+    int edadBuscada;
 
     //cargar_jedis();
-    mostrar_jedis();
-    printf("\ningrese el numero del planeta que desea crear el arreglo de jedis");
+    /*mostrar_jedis();
+    printf("\ningrese el numero del planeta que desea crear el arreglo de jedis: ");
     scanf("%i",&planeta_buscado);
+    cantidad_en_planeta(planetaBuscado);*/
+    printf("elije una edad para saber la cantidad de jedis con esa edad: ");
+    scanf(" %i",&edadBuscada);
+    int tamanio = contarRegistros(edadBuscada);
+    printf("la cantidad de jedis con esa edad es de [%i]",tamanio);
 
     return 0;
 }
@@ -102,12 +113,12 @@ void mostrar_jedi(StJedi jedi)
     printf("\n-----------------------------------------------\n");
     printf("\nLegajo del jedi: %i ",jedi.legajo);
 
-    printf("\nEl jedi se llama ");
+    printf("\nEl jedi se llama: ");
     puts(jedi.nombre_apellido);
 
     printf("la edad del jedi es: %i ",jedi.edad);
 
-    printf("\nEl jedi tiene el rango de: %s ", (jedi.rango == 'M' || jedi.rango == 'm') ? "Maestro" : "Padawan");
+    printf("\nEl jedi tiene el rango de: %s ",(jedi.rango == 'M' || jedi.rango == 'm') ? "Maestro" : "Padawan");
 
     printf("\nProviene del planeta %i",jedi.id_planeta);
     printf("\n-----------------------------------------------\n");
@@ -134,6 +145,7 @@ void mostrar_jedis()
             mostrar_jedi(jedi);
         }
     }
+    fclose(buffer);
 }
 int Legajo_repetido(int Legajo_buscado)
 {
@@ -156,9 +168,12 @@ int Legajo_repetido(int Legajo_buscado)
         else
             TorF = 0;
     }
+
+    fclose(buffer);
+
     return TorF;
 }
-int cantidad_en_planeta(int planeta_buscado)
+void cantidad_en_planeta(int planeta_buscado)
 {
     FILE* buffer;
     buffer = fopen("ArchivoJedis","r+b");
@@ -184,7 +199,16 @@ int cantidad_en_planeta(int planeta_buscado)
             }
         }
     }
-   return i;
+
+    ordenar_jedis_por_legajo(arrJedisXPlaneta, i); ///acá ordeno el arreglo
+
+    printf("\n**************** Arreglo de Jedis ***************************\n");
+
+    mostrar_arreglo_jedis(arrJedisXPlaneta,i);
+
+    printf("\n**************** Arreglo del planeta %i ************************\n",planeta_buscado);
+
+fclose(buffer);
 }
 void mostrar_arreglo_jedis(StJedi jedi[],int validos)
 {
@@ -192,4 +216,55 @@ void mostrar_arreglo_jedis(StJedi jedi[],int validos)
     {
         mostrar_jedi(jedi[i]);
     }
+}
+void intercambiar_jedis(StJedi* a, StJedi* b)
+{
+    StJedi aux = *a;
+    *a = *b;
+    *b = aux;
+}
+int buscar_pos_min_legajo(StJedi arr[], int desde, int validos)
+{
+    int posMin = desde;
+    for(int j = desde + 1; j < validos; j++)
+    {
+        if(arr[j].legajo < arr[posMin].legajo)
+        {
+            posMin = j;
+        }
+    }
+    return posMin;
+}
+void ordenar_jedis_por_legajo(StJedi arr[], int validos)
+{
+    for(int i = 0; i < validos - 1; i++)
+    {
+        int posMin = buscar_pos_min_legajo(arr, i, validos);
+        if(posMin != i)
+        {
+            intercambiar_jedis(&arr[i], &arr[posMin]);
+        }
+    }
+}
+int contarRegistros(int edad)
+{
+    StJedi jedi;
+
+    FILE* buffer;
+    buffer = fopen("ArchivoJedis","rb");
+    int tamanio = 0;
+
+    if(buffer == NULL)
+    {
+        printf("No se pudo abrir \n");
+    }
+    else
+    {
+        fseek(buffer, 0 ,SEEK_END);
+
+        tamanio = (ftell(buffer)) / (sizeof(StJedi));
+
+        fclose(buffer);
+    }
+    return tamanio;
 }

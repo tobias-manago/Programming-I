@@ -39,9 +39,6 @@ int main()
     srand(time(NULL));
     cargar_la_matriz_con_numeros_random(M1);
     mostrarMatriz1(M1);
-
-
-
     return 0;
 }
 int cargarArray(int arreglo[],int dim)      ///funcion Punto 1

@@ -254,7 +254,6 @@ void ordenarSeleccion(int A[], int validos)
         }
     }
 }
-
 // Ordenamiento por inserción
 void ordenarInsercion(int A[], int validos)
 {
@@ -270,7 +269,6 @@ void ordenarInsercion(int A[], int validos)
         A[j + 1] = key;
     }
 }
-
 // Intercala dos arreglos de chars ordenados en uno nuevo, también ordenado
 int intercalarArreglos(char A[], int validosA, char B[], int validosB, char C[])
 {
@@ -286,7 +284,6 @@ int intercalarArreglos(char A[], int validosA, char B[], int validosB, char C[])
     while (j < validosB) C[k++] = B[j++];
     return k; // Retorna la cantidad de elementos en C
 }
-
 // Genera vector acumulativo como {1,6,12,19,27}
 void generarAcumulado(int A[], int validos, int resultado[])
 {
